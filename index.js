@@ -1,4 +1,6 @@
 import puppeteer from 'puppeteer';
+import secret from './secret.js';
+
 
 (async () => {
   const browser = await puppeteer.launch({
@@ -38,7 +40,10 @@ import puppeteer from 'puppeteer';
 
 
         if (btnValue.includes("Consulares")){
-           return await dialogBtn[1].click()
+           await dialogBtn[1].click()
+           return  setTimeout(() => {
+                            signup()
+                    }, 10000)
         }
 
         console.log("Error buscando la opcion de oficina consular, cerrando");
@@ -46,12 +51,18 @@ import puppeteer from 'puppeteer';
 
     }
 
+    const signup = async () => {
+        console.log("me acaban de llamar")
+        const inputs = await page.$$('.form-control', inputs => inputs)
+        await inputs[0].type(secret.email)
+    }
+
     // Wait for the territory dialog and click the appropiate action
     page.waitForSelector('.modal-body').then(() =>{ 
         console.log("Aceptando la opcion de territorio...")
         territoryDialogAction()
-
-
     })
+
+
 
 })();
