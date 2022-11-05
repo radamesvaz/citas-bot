@@ -1,0 +1,28 @@
+{
+  "name": "citas-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "devDependencies": {
+    "puppeteer": "^19.2.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/radamesvaz/citas-bot.git"
+  },
+  "keywords": [
+    "bot",
+    "puppeteer"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/radamesvaz/citas-bot/issues"
+  },
+  "type": "module",
+  "homepage": "https://github.com/radamesvaz/citas-bot#readme"
+}
