@@ -43,6 +43,9 @@ const runBot = async () => {
       const page = await browser.newPage();
     
       await page.goto('https://citas.sre.gob.mx/', { waitUntil: 'load' });
+
+      console.log(colours.bg.blue, colours.fg.white, "Iniciando...", colours.reset) ; 
+
     
     // Dialog handlers
         const territoryDialogAction = async () => {
@@ -125,10 +128,12 @@ const runBot = async () => {
                     console.log(options)
                 } 
             } else {
-                console.log(colours.bg.green, colours.fg.white, "Volviendo a intentar", colours.reset) ; 
+                console.log(colours.bg.green, colours.fg.white, "Volviendo a intentar en 27 minutos", colours.reset) ; 
                 console.log(options)
-                await browser.close();
-                runBot();
+                setTimeout(async () => {
+                    await browser.close();
+                    runBot();
+                }, 1600000)
             }
         }
     
