@@ -40,11 +40,20 @@ const runBot = async () => {
         devtools: false,
         args: [`--window-size=800,800`],
       });
+
+      
       const page = await browser.newPage();
     
-      await page.goto('https://citas.sre.gob.mx/', { waitUntil: 'load' });
+    try {
+        await page.goto('https://citas.sre.gob.mx/', { waitUntil: 'load' });
 
-      console.log(colours.bg.blue, colours.fg.white, "Iniciando...", colours.reset) ; 
+        console.log(colours.bg.blue, colours.fg.white, "Iniciando...", colours.reset) ; 
+    } catch (e) {
+        console.log(colours.bg.red, colours.fg.white, "Error:", colours.reset) ; 
+        console.log(e);
+        await browser.close();
+        runBot();
+    }
 
     
     // Dialog handlers
@@ -112,10 +121,18 @@ const runBot = async () => {
     
         const schedule = async () => {
             await page.waitForNavigation()
-            setTimeout(async () => {
-                await page.click('a.btn-primary')
-                closeOfficeDialog()
-            }, 5000)
+            try {
+                setTimeout(async () => {
+                    await page.click('a.btn-primary')
+                    closeOfficeDialog()
+                }, 5000)
+            } catch (e) {
+                console.log(colours.bg.red, colours.fg.white, "Error:", colours.reset) ; 
+                console.log(e);
+                await browser.close();
+                runBot();
+            }
+
         }
     
         const checkForAppointment = async () => {
