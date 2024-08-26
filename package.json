@@ -4,12 +4,11 @@
   "description": "",
   "main": "index.js",
   "devDependencies": {
-    "puppeteer": "^19.2.2"
+    "puppeteer": "^19.11.1"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  
   "repository": {
     "type": "git",
     "url": "git+https://github.com/radamesvaz/citas-bot.git"
